@@ -1,100 +1,48 @@
-Here's a detailed report outline for solving the loan default prediction problem:
+Loan Approval Prediction
+This repository contains a project for predicting loan approvals based on customer data. The project involves Exploratory Data Analysis (EDA) to uncover insights and relationships within the data and the implementation of three machine learning models: Random Forest, Logistic Regression, and AdaBoost. The model with the highest accuracy is selected for deployment.
 
----
+Table of Contents
+Introduction
+Project Workflow
+Dataset Description
+EDA (Exploratory Data Analysis)
+Machine Learning Models
+Model Selection
+Results
+How to Run
+Dependencies
+Conclusion
+Introduction
+The goal of this project is to predict whether a loan application will be approved based on various applicant details. The prediction can assist financial institutions in making informed decisions efficiently.
 
-## **Report on Loan Default Prediction**
+Project Workflow
+Data preprocessing: Handle missing values, encode categorical variables, and scale numerical features.
+Exploratory Data Analysis: Identify patterns and relationships in the dataset.
+Model training: Train three models (Random Forest, Logistic Regression, AdaBoost).
+Model evaluation: Compare model performance metrics.
+Model selection: Select the model with the highest accuracy.
+Dataset Description
+The dataset contains the following features:
 
-### **Objective**
-The goal is to build a classification model for an NBFC to predict loan default status (`loan_status` = 1 for default, 0 for non-default) to improve the loan approval process and risk assessment.
+ApplicantIncome: Income of the applicant.
+LoanAmount: Loan amount requested.
+Loan_Amount_Term: Term of the loan.
+Credit_History: Credit history of the applicant.
+Loan_Status: Target variable (1: Approved, 0: Not Approved).
+EDA (Exploratory Data Analysis)
+The EDA phase involves:
 
----
+Distribution analysis of numerical and categorical features.
+Identifying correlations between features and the target variable.
+Handling outliers and missing data.
+Visualizing important patterns using plots such as histograms, box plots, and scatter plots.
+Machine Learning Models
+The following models were implemented:
 
-### **Steps Taken**
+AdaBoost: Achieved an accuracy of 77%
+Logistic Regression: Achieved an accuracy of 74%.
+Random Forest: It ranges between 76 80%
+Model Selection
+A separate file, model_selection.ipynb, is included in this repository. This script automatically selects the model with the highest accuracy, As their are minor differnce in a accuray of random forest and adaboost
 
-#### **1. Data Understanding and Preparation**
-- **Data Files**:
-  - **`train_data.xlsx`**: Historical data for 2+ years.
-  - **`test_data.xlsx`**: Validation data for the last 3 months.
-
-- **Features**:
-  - Includes `customer_id`, `transaction_date`, `sub_grade`, `term`, `home_ownership`, `cibil_score`, `annual_inc`, `int_rate`, `loan_amnt`, etc.
-
-- **Target Variable**: `loan_status`.
-
----
-
-#### **2. Exploratory Data Analysis (EDA)**
-- **Notebook**: Created a file named `eda.ipynb` for EDA with detailed visualizations and markdown comments.
-- **Steps**:
-  1. **Data Overview**: Checked data types, missing values, and descriptive statistics.
-  2. **Feature Analysis**:
-     - Correlation analysis for numeric variables (e.g., `cibil_score`, `annual_inc`).
-     - Distribution analysis for categorical features (e.g., `home_ownership`, `sub_grade`).
-  3. **Default Rate Trends**:
-     - Examined default rates across features like `sub_grade`, `cibil_score`, and `loan_amnt`.
-  4. **Data Cleaning**:
-     - Handled missing values (e.g., mean/mode imputation for numeric and categorical data).
-     - Addressed outliers using boxplots.
-
----
-
-#### **3. Modeling**
-- **Script**: Developed a training pipeline in `model_.py` using object-oriented principles.
-- **Steps**:
-  1. **Data Preprocessing**:
-     - Encoded categorical variables using one-hot encoding or label encoding.
-     - Scaled numerical features using StandardScaler.
-  2. **Model Training**:
-     - Implemented two machine learning models:
-       - **Random Forest Classifier**
-       - **Logistic Regression**
-     - Used cross-validation for robust evaluation.
-  3. **Pipeline Functions**:
-     - `load`: Loaded the datasets.
-     - `preprocess`: Encoded, scaled, and split data.
-     - `train`: Trained the models.
-     - `test`: Evaluated performance on validation data.
-     - `predict`: Made predictions on new data.
-
----
-
-#### **4. Model Selection**
-- **Notebook**: Created `model_selection.ipynb` to compare models and select the best one.
-- **Steps**:
-  1. **Metrics Evaluated**:
-     - Accuracy, Precision, Recall, F1-score, and AUC-ROC.
-  2. **Hyperparameter Tuning**:
-     - Used GridSearchCV for parameter optimization.
-  3. **Model Comparison**:
-     - Random Forest outperformed Logistic Regression in terms of AUC-ROC and Recall.
-  4. **Final Model Justification**:
-     - Chose Random Forest due to its better ability to handle non-linear relationships and feature importance analysis.
-
----
-
-#### **5. Final Deliverables**
-- **Files Submitted**:
-  - `eda.ipynb`: EDA with outputs and insights.
-  - `model_.py`: Training pipeline with object-oriented design.
-  - `model_selection.ipynb`: Model comparison and final selection.
-  - ZIP File: Packaged all files into `<Your Full Name>.zip`.
-
----
-
-### **Results**
-- **Final Model**: Random Forest Classifier
-- **Key Metrics**:
-  - Accuracy: 85%
-  - Precision: 78%
-  - Recall: 82%
-  - AUC-ROC: 0.92
-
----
-
-### **Recommendations**
-- Periodically update the model with new data to maintain accuracy.
-- Integrate the final model into the loan approval process to enhance decision-making.
-
----
-
-This report template outlines the process comprehensively. You can fill in specific results and details once you execute the steps. Let me know if you need further elaboration!
+so when randomforest accuracy is 76 then it will select the Adaboost as preferred model. if its greater than 76% then it will select Random forest.
